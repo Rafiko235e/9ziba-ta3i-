@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>MERIEM ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:'Poppins',sans-serif;
+}
+
+
+.card{
+
+background:rgba(255,255,255,0.95);
+width:85%;
+max-width:650px;
+padding:40px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 0 40px rgba(255,50,100,0.5);
+}
+
+
+h1{
+
+font-family:'Great Vibes',cursive;
+font-size:85px;
+color:#ff3366;
+
+}
+
+
+button{
+
+background:#ff3366;
+color:white;
+border:none;
+padding:18px 35px;
+border-radius:40px;
+font-size:20px;
+cursor:pointer;
+transition:.3s;
+
+}
+
+
+button:hover{
+
+transform:scale(1.1);
+
+}
+
+
+
+#message{
+
+display:none;
+animation:appear 2s;
+
+}
+
+
+
+p{
+
+font-size:18px;
+line-height:1.8;
+color:#444;
+
+}
+
+
+
+.heart{
+
+font-size:60px;
+animation:beat 1s infinite;
+
+}
+
+
+
+@keyframes beat{
+
+50%{
+transform:scale(1.3);
+}
+
+}
+
+
+@keyframes appear{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+
+
+.fall{
+
+position:absolute;
+top:-50px;
+font-size:25px;
+animation:fall 6s linear infinite;
+
+}
+
+
+@keyframes fall{
+
+to{
+transform:translateY(110vh);
+}
+
+}
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="card">
+
+
+<div id="start">
+
+<div class="heart">❤️</div>
+
+<h1>MERIEM</h1>
+
+<button onclick="openMessage()">
+Click here MERIEM ❤️
+</button>
+
+</div>
+
+
+
+<div id="message">
+
+
+<div class="heart">❤️</div>
+
+
+<h1>MERIEM</h1>
+
+
+<p>
+
+My beautiful MERIEM ❤️
+
+<br><br>
+
+I don't know if I will ever find the perfect words to describe how much you mean to me, but I want to try because you deserve to know how special you are.
+
+<br><br>
+
+From the moment you became part of my life, something changed. My days became more beautiful, my smiles became more real, and I started to appreciate the little moments even more.
+
+<br><br>
+
+Having you in my life is not something I take for granted. You are a precious person who brings happiness, comfort, and a beautiful feeling that is difficult to explain with words.
+
+<br><br>
+
+I love the way you are, your personality, your kindness, your smile, and all the little things that make you different from everyone else.
+
+<br><br>
+
+Thank you for every moment, every conversation, every laugh, and every memory. Thank you for being someone who can make my heart feel happy just by being there.
+
+<br><br>
+
+On your birthday, I wish you a life full of happiness, success, peace, and beautiful surprises. I hope every dream you have comes true, and I hope you always keep that beautiful smile on your face.
+
+<br><br>
+
+Never forget that you are someone very important to me. You have a special place in my heart, and I will always appreciate having you in my life.
+
+<br><br>
+
+You are not just a person I love, you are a beautiful part of my story, and I am grateful for every moment that brought me closer to you.
+
+<br><br>
+
+
+Happy Birthday MERIEM ❤️🎂
+
+<br><br>
+
+Always stay beautiful, happy, and amazing.
+
+<br><br>
+
+<b>lovvvvveeeeee unusual habibi ta333yyy w7dyyyy ❤️</b>
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+function openMessage(){
+
+document.getElementById("start").style.display="none";
+
+document.getElementById("message").style.display="block";
+
+}
+
+
+
+for(let i=0;i<40;i++){
+
+let h=document.createElement("div");
+
+h.className="fall";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"%";
+
+h.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
