@@ -1,239 +1,333 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>MERIEM ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
-
 <style>
 
-body{
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+overflow:hidden;
 height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-overflow:hidden;
-background:linear-gradient(135deg,#ff9a9e,#fad0c4);
 font-family:'Poppins',sans-serif;
-}
+background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fad0c4,#ffc3a0);
 
+}
 
 .card{
 
-background:rgba(255,255,255,0.95);
-width:85%;
-max-width:650px;
-padding:40px;
-border-radius:30px;
-text-align:center;
-box-shadow:0 0 40px rgba(255,50,100,0.5);
-}
+position:relative;
 
+width:90%;
+max-width:700px;
+
+background:rgba(255,255,255,.92);
+
+padding:45px;
+
+border-radius:35px;
+
+text-align:center;
+
+box-shadow:0 0 45px rgba(255,40,120,.35);
+
+z-index:20;
+
+}
 
 h1{
 
 font-family:'Great Vibes',cursive;
+
 font-size:85px;
-color:#ff3366;
+
+color:#ff2f66;
+
+margin-bottom:20px;
 
 }
-
 
 button{
 
-background:#ff3366;
+background:#ff2f66;
+
 color:white;
+
 border:none;
-padding:18px 35px;
-border-radius:40px;
+
+padding:18px 36px;
+
 font-size:20px;
+
+border-radius:50px;
+
 cursor:pointer;
-transition:.3s;
+
+transition:.35s;
+
+position:relative;
 
 }
-
 
 button:hover{
 
-transform:scale(1.1);
+transform:scale(1.08);
 
 }
-
-
 
 #message{
 
 display:none;
-animation:appear 2s;
+
+animation:show 1.5s;
 
 }
 
-
-
-p{
+#typewriter{
 
 font-size:18px;
-line-height:1.8;
+
+line-height:1.9;
+
 color:#444;
 
-}
-
-
-
-.heart{
-
-font-size:60px;
-animation:beat 1s infinite;
+white-space:pre-wrap;
 
 }
 
-
-
-@keyframes beat{
-
-50%{
-transform:scale(1.3);
-}
-
-}
-
-
-@keyframes appear{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
-
-
-.fall{
+.cat{
 
 position:absolute;
-top:-50px;
-font-size:25px;
-animation:fall 6s linear infinite;
+
+background:white;
+
+padding:12px 18px;
+
+border-radius:18px;
+
+box-shadow:0 10px 25px rgba(0,0,0,.18);
+
+font-size:28px;
+
+animation:show .4s;
+
+z-index:100;
 
 }
 
+.heartRain{
+
+position:absolute;
+
+top:-30px;
+
+font-size:24px;
+
+animation:fall linear infinite;
+
+pointer-events:none;
+
+}
 
 @keyframes fall{
 
 to{
+
 transform:translateY(110vh);
-}
 
 }
 
+}
+
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+canvas{
+
+position:fixed;
+
+left:0;
+
+top:0;
+
+pointer-events:none;
+
+}
 
 </style>
 
 </head>
 
-
 <body>
 
+<canvas id="fireworks"></canvas>
 
 <div class="card">
 
-
 <div id="start">
 
-<div class="heart">❤️</div>
+<h1>MERIEM ❤️</h1>
 
-<h1>MERIEM</h1>
+<p style="margin-bottom:25px;font-size:19px;color:#555;">
+Someone has a surprise for you...
+</p>
 
-<button onclick="openMessage()">
+<button id="btn" onclick="moveButton(this)">
+
 Click here MERIEM ❤️
+
 </button>
 
 </div>
 
-
-
 <div id="message">
 
+<h1>Happy Birthday ❤️</h1>
 
-<div class="heart">❤️</div>
+<div id="typewriter"></div>
 
+</div>
 
-<h1>MERIEM</h1>
+</div>
+<script>
 
+let clicks = 0;
 
-<p>
+const buttonTexts = [
+"Click here MERIEM ❤️",
+"Catch me 😸",
+"Too slow 😹",
+"Almost there ❤️",
+"One more click 🐾"
+];
 
-My beautiful MERIEM ❤️
+const catMessages = [
+"😸 Catch me!",
+"😹 Too slow!",
+"🐾 Almost there!",
+"😼 One more click!"
+];
 
-<br><br>
+const message = `My beautiful MERIEM ❤️
 
-I don't know if I will ever find the perfect words to describe how much you mean to me, but I want to try because you deserve to know how special you are.
+I don't know if words will ever be enough to tell you how much you mean to me.
 
-<br><br>
+From the moment you became part of my life, everything started feeling brighter. Your smile, your kindness, your beautiful soul... all of it makes my days happier.
 
-From the moment you became part of my life, something changed. My days became more beautiful, my smiles became more real, and I started to appreciate the little moments even more.
+Thank you for every laugh, every conversation, every memory, and every little moment we shared.
 
-<br><br>
+On your birthday I wish you endless happiness, good health, success, peace, and a future full of beautiful surprises.
 
-Having you in my life is not something I take for granted. You are a precious person who brings happiness, comfort, and a beautiful feeling that is difficult to explain with words.
-
-<br><br>
-
-I love the way you are, your personality, your kindness, your smile, and all the little things that make you different from everyone else.
-
-<br><br>
-
-Thank you for every moment, every conversation, every laugh, and every memory. Thank you for being someone who can make my heart feel happy just by being there.
-
-<br><br>
-
-On your birthday, I wish you a life full of happiness, success, peace, and beautiful surprises. I hope every dream you have comes true, and I hope you always keep that beautiful smile on your face.
-
-<br><br>
-
-Never forget that you are someone very important to me. You have a special place in my heart, and I will always appreciate having you in my life.
-
-<br><br>
-
-You are not just a person I love, you are a beautiful part of my story, and I am grateful for every moment that brought me closer to you.
-
-<br><br>
-
+Never forget that you are someone very special to me.
 
 Happy Birthday MERIEM ❤️🎂
 
-<br><br>
+Forever & Always ❤️
 
-Always stay beautiful, happy, and amazing.
+lovvvvveeeeee uuuuuu habibi ta333yyy w7dyyyy ❤️`;
 
-<br><br>
+function moveButton(btn){
 
-<b>lovvvvveeeeee unusual habibi ta333yyy w7dyyyy ❤️</b>
+clicks++;
 
+if(clicks < 5){
 
-</p>
+btn.innerHTML = buttonTexts[clicks];
 
+btn.style.position="fixed";
 
-</div>
+btn.style.left=(10+Math.random()*70)+"%";
 
+btn.style.top=(10+Math.random()*70)+"%";
 
-</div>
+showCat(clicks);
 
+return;
 
+}
 
-<script>
+startCountdown();
 
+}
+
+function showCat(i){
+
+let cat=document.createElement("div");
+
+cat.className="cat";
+
+cat.innerHTML=catMessages[i-1];
+
+cat.style.left=(i%2==0?"8%":"72%");
+
+cat.style.top=(18+i*10)+"%";
+
+document.body.appendChild(cat);
+
+setTimeout(()=>{
+
+cat.remove();
+
+},1800);
+
+}
+
+function startCountdown(){
+
+document.getElementById("start").innerHTML=
+
+"<h1>Ready...? ❤️</h1><h1 id='count'>3</h1>";
+
+let n=3;
+
+let t=setInterval(()=>{
+
+n--;
+
+document.getElementById("count").innerHTML=n;
+
+if(n==0){
+
+clearInterval(t);
+
+openMessage();
+
+}
+
+},1000);
+
+}
 
 function openMessage(){
 
@@ -241,29 +335,191 @@ document.getElementById("start").style.display="none";
 
 document.getElementById("message").style.display="block";
 
+typeMessage();
+
+}function typeMessage(){
+
+let i=0;
+
+const target=document.getElementById("typewriter");
+
+const timer=setInterval(()=>{
+
+target.innerHTML+=message.charAt(i);
+
+i++;
+
+if(i>=message.length){
+
+clearInterval(timer);
+
+}
+
+},25);
+
 }
 
 
 
-for(let i=0;i<40;i++){
+for(let i=0;i<60;i++){
 
-let h=document.createElement("div");
+let heart=document.createElement("div");
 
-h.className="fall";
+heart.className="heartRain";
 
-h.innerHTML="❤️";
+heart.innerHTML="❤️";
 
-h.style.left=Math.random()*100+"%";
+heart.style.left=Math.random()*100+"%";
 
-h.style.animationDelay=Math.random()*5+"s";
+heart.style.animationDuration=(4+Math.random()*5)+"s";
 
-document.body.appendChild(h);
+heart.style.animationDelay=Math.random()*5+"s";
+
+heart.style.fontSize=(18+Math.random()*20)+"px";
+
+document.body.appendChild(heart);
 
 }
 
+
+
+const canvas=document.getElementById("fireworks");
+
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+window.onresize=()=>{
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+};
+
+let particles=[];
+
+function explode(){
+
+for(let i=0;i<220;i++){
+
+particles.push({
+
+x:canvas.width/2,
+
+y:canvas.height/2,
+
+vx:(Math.random()-0.5)*12,
+
+vy:(Math.random()-0.5)*12,
+
+life:100,
+
+color:`hsl(${Math.random()*360},100%,60%)`
+
+});
+
+}
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+for(let i=particles.length-1;i>=0;i--){
+
+let p=particles[i];
+
+p.x+=p.vx;
+
+p.y+=p.vy;
+
+p.vy+=0.05;
+
+p.life--;
+
+ctx.fillStyle=p.color;
+
+ctx.beginPath();
+
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+
+ctx.fill();
+
+if(p.life<=0){
+
+particles.splice(i,1);
+
+}
+
+}
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+const oldOpenMessage=openMessage;
+
+openMessage=function(){
+
+explode();
+
+oldOpenMessage();
+
+};/* إطلاق عدة ألعاب نارية */
+
+let fireworkRounds = 0;
+
+const fireTimer = setInterval(() => {
+
+    explode();
+
+    fireworkRounds++;
+
+    if (fireworkRounds >= 8) {
+
+        clearInterval(fireTimer);
+
+    }
+
+}, 700);
+
+
+
+/* نجوم بالخلفية */
+
+for(let i=0;i<120;i++){
+
+    let star=document.createElement("div");
+
+    star.style.position="fixed";
+
+    star.style.width="2px";
+
+    star.style.height="2px";
+
+    star.style.background="white";
+
+    star.style.borderRadius="50%";
+
+    star.style.left=Math.random()*100+"%";
+
+    star.style.top=Math.random()*100+"%";
+
+    star.style.opacity=Math.random();
+
+    star.style.animation="show "+(2+Math.random()*3)+"s infinite alternate";
+
+    document.body.appendChild(star);
+
+}
 
 </script>
-
 
 </body>
 
